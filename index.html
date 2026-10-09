@@ -4,146 +4,278 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#143e32">
-<title>Vezirköprü Keşfet</title>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<meta name="theme-color" content="#103b30">
+<title>Vezirköprü Atlası | Keşfet</title>
 <style>
-:root{--green:#143e32;--light:#e5f0e5;--gold:#e6c17a;--paper:#faf8f0}
-*{box-sizing:border-box;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:#26342d;font-family:Arial,sans-serif;line-height:1.65}
-header{position:sticky;top:0;z-index:1000;background:var(--green);color:white}
-nav{max-width:1100px;margin:auto;padding:12px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-nav .logo{font-size:20px;font-weight:bold;color:#d5f0d9;margin-right:auto;text-decoration:none}
-nav a:not(.logo){color:white;text-decoration:none;padding:7px 10px;border-radius:20px;background:#ffffff16;font-size:14px}
-nav a:hover{background:var(--gold);color:#143e32}
-main{max-width:1100px;margin:auto;padding:20px}
-section{margin:0 0 40px;scroll-margin-top:110px}
-.hero{min-height:430px;border-radius:24px;padding:28px;color:white;display:flex;flex-direction:column;justify-content:space-between;background:linear-gradient(120deg,#102e25eF,#174f3dd9),url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=85') center/cover}
-.kicker{color:#ccebd3;letter-spacing:3px;font-weight:bold}
-h1{font-size:clamp(40px,8vw,70px);line-height:1.05;margin:15px 0}
-.hero p{font-size:18px;max-width:600px}
-.credit{text-align:right;font-size:14px;margin-top:20px}
-.btn{display:inline-block;background:var(--gold);color:#20352b;padding:11px 17px;border-radius:24px;text-decoration:none;font-weight:bold;margin:6px 5px 0 0}
-h2{color:var(--green);font-size:clamp(28px,5vw,38px);line-height:1.2}
-.intro{font-size:17px}
-#map{height:410px;border-radius:16px;z-index:1}
-.panel{background:white;padding:16px;border-radius:20px;border:1px solid #e2e5d9}
-.map-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:15px}
-.map-item{border:1px solid #dce4d9;border-radius:12px;padding:12px;display:flex;gap:12px;align-items:flex-start;background:white;cursor:pointer;text-align:left;color:#26342d;font:inherit}
-.map-item:hover,.map-item:focus{border-color:#286c50;background:#f0f7ef}
-.num{flex:0 0 34px;height:34px;border-radius:50%;background:var(--green);color:white;display:grid;place-items:center;font-weight:bold}
-.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.place{background:white;border-radius:18px;overflow:hidden;border:1px solid #e3e3d8}
-.place img{width:100%;height:210px;object-fit:cover;display:block;background:#dfe7dc}
-.place-body{padding:18px}
-.place h3{color:var(--green);margin:0 0 8px;font-size:22px}
-.place p{margin:0 0 12px}
-.place a{color:#17563d;font-weight:bold}
-.note{font-size:13px;color:#65736b}
-footer{background:var(--green);color:white;text-align:center;padding:28px 16px}
-footer a{color:#d5f0d9}
-@media(max-width:650px){
- main{padding:13px}
- nav .logo{width:100%;margin-bottom:3px}
- nav{gap:6px}
- nav a:not(.logo){font-size:13px;padding:7px 9px}
- .hero{min-height:410px;padding:22px}
- #map{height:330px}
- .map-list,.cards{grid-template-columns:1fr}
- .place img{height:220px}
+:root{--green:#103b30;--mint:#b4dfcd;--cream:#f5f0e5;--ink:#202820;--gold:#c99b53}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Arial,sans-serif;line-height:1.75}
+header{background:var(--green);color:white;padding:16px 5%;position:sticky;top:0;z-index:1000;box-shadow:0 3px 16px #0002}
+.brand{font-size:23px;font-weight:800;color:var(--mint)}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+nav a{color:white;text-decoration:none;padding:7px 10px;border-radius:20px;font-size:14px}
+nav a:hover{background:#ffffff22}
+.hero{min-height:520px;display:flex;align-items:flex-end;padding:36px 7%;color:white;background:linear-gradient(0deg,#061c17eF,transparent 90%),url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero-content{max-width:760px}
+.eyebrow{color:#e7c78c;font-weight:bold;letter-spacing:2px;text-transform:uppercase}
+h1{font-size:clamp(38px,7vw,72px);line-height:1.05;margin:12px 0}
+.hero p{font-size:19px;max-width:650px}
+.button{display:inline-block;background:var(--gold);color:#17251c;padding:11px 19px;border-radius:7px;text-decoration:none;font-weight:bold;margin:8px 8px 0 0}
+section{padding:54px 6%;max-width:1250px;margin:auto}
+.section-heading{max-width:780px;margin-bottom:28px}
+h2{font-size:clamp(28px,4vw,42px);line-height:1.2;color:var(--green);margin:0 0 12px}
+h3{font-size:25px;line-height:1.3;margin:12px 0;color:var(--green)}
+.lead{font-size:18px;color:#4c5a51}
+.photo{width:100%;height:270px;object-fit:cover;display:block;background:#d8ded5}
+.feature{display:grid;grid-template-columns:1fr 1fr;background:white;border-radius:16px;overflow:hidden;margin:28px 0;box-shadow:0 7px 25px #19382b10}
+.feature:nth-of-type(even){grid-template-columns:1fr 1fr}
+.feature img{height:100%;min-height:340px}
+.feature-body{padding:28px}
+.tag{display:inline-block;color:#76521f;background:#f4e7cb;padding:4px 10px;border-radius:20px;font-size:13px;font-weight:bold}
+.feature p{font-size:16px}
+.map-section{max-width:none;background:#e4e9dd}
+.map-inner{max-width:1120px;margin:auto}
+#map{height:390px;border-radius:14px;border:1px solid #aab9ac;overflow:hidden;background:#dbe7d4}
+.map-note{font-size:14px;color:#58665a}
+.stop-list{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:20px}
+.stop{background:white;border:1px solid #d4ddd2;border-radius:10px;padding:14px;text-align:left;cursor:pointer;color:var(--ink);font-size:15px}
+.stop strong{display:block;color:var(--green);font-size:16px}
+.stop:hover{border-color:var(--green);background:#f5faf5}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 5px 20px #19382b0d}
+.card img{height:250px}
+.card-body{padding:22px}
+.card p{margin-bottom:14px}
+.small-link{color:#27634c;font-weight:bold;text-decoration:underline}
+.quote{padding:28px;background:#e4e9dd;border-left:5px solid var(--gold);border-radius:8px;font-size:18px}
+footer{background:var(--green);color:#e9f2eb;padding:30px 6%;text-align:center}
+footer p{margin:5px}
+@media(max-width:720px){
+ header{padding:12px 4%}.brand{font-size:20px}nav{gap:3px}nav a{font-size:13px;padding:6px}
+ .hero{min-height:470px;padding:28px 6%}.hero p{font-size:17px}
+ section{padding:38px 5%}
+ .feature,.feature:nth-of-type(even){grid-template-columns:1fr}
+ .feature img{height:240px;min-height:0}
+ .cards{grid-template-columns:1fr}
+ .card img{height:230px}
+ .stop-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+ #map{height:340px}
 }
 </style>
 </head>
 <body>
 <header>
-<nav>
-<a class="logo" href="#kapak">🌿 Vezirköprü Keşfet</a>
-<a href="#harita">🗺️ Harita</a>
-<a href="#tarihi">🏛️ Tarih</a>
-<a href="#doga">🌲 Doğa</a>
-<a href="#lezzet">🥘 Lezzetler</a>
-</nav>
+  <div class="brand">🌿 Vezirköprü Atlası</div>
+  <nav aria-label="Ana menü">
+    <a href="#anasayfa">Ana Sayfa</a>
+    <a href="#harita">🗺️ Harita</a>
+    <a href="#tarih">Tarih</a>
+    <a href="#doga">Doğa</a>
+    <a href="#semaver">Semaver</a>
+    <a href="#lezzetler">Lezzetler</a>
+    <a href="#yemek">Yemek Yerleri</a>
+  </nav>
 </header>
 
 <main>
-<section class="hero" id="kapak">
-<div>
-<div class="kicker">SAMSUN · KARADENİZ</div>
-<h1>Vezirköprü’yü<br>keşfet!</h1>
-<p>Tarihi, doğal güzellikleri ve kültürel mirasıyla Vezirköprü’nün keşfedilmeyi bekleyen yerlerini tanı.</p>
-<a class="btn" href="#harita">🗺️ Haritayı keşfet</a>
-<a class="btn" href="#tarihi">📸 Gezilecek yerler</a>
+<div class="hero" id="anasayfa">
+  <div class="hero-content">
+    <div class="eyebrow">Samsun · Karadeniz</div>
+    <h1>Bir ilçeden çok daha fazlası.</h1>
+    <p>Tarihî sokakları, Kızılırmak’ın görkemli kanyonu, geleneksel semaveri ve köklü kültürüyle Vezirköprü’yü hikâyeleriyle keşfet.</p>
+    <a class="button" href="#tarih">Hikâyeyi keşfet</a>
+    <a class="button" href="#harita">Gezi haritasına git</a>
+    <p style="font-size:12px;margin-top:26px">Vezirköprü Anadolu Lisesi — Burcu Ateş tarafından tasarlanmıştır.</p>
+  </div>
 </div>
-<div class="credit">Vezirköprü Anadolu Lisesi<br>Burcu Ateş tarafından tasarlanmıştır.</div>
+
+<section id="harita" class="map-section">
+ <div class="map-inner">
+  <div class="section-heading">
+   <div class="eyebrow" style="color:#7c5c2d">Gezi rotanı oluştur</div>
+   <h2>Vezirköprü haritası</h2>
+   <p class="lead">Haritadaki numaralara dokunarak durakları tanıyabilirsin. Ardından aşağıdaki fotoğraflı anlatımlarla her yeri daha yakından keşfet.</p>
+  </div>
+  <div id="map" aria-label="Vezirköprü gezi haritası"></div>
+  <p class="map-note">Harita OpenStreetMap ile yüklenir. Bazı durakların konumu yaklaşık olabilir; yola çıkmadan önce konumu kontrol et.</p>
+  <div class="stop-list" id="stopList"></div>
+ </div>
 </section>
 
-<section id="harita">
-<h2>🗺️ Keşif haritası</h2>
-<p class="intro">Haritadaki numaralara dokun. Her numara bir gezi noktasını gösterir; açılan pencereden yerin adını, fotoğrafını ve açıklamasını görebilirsin.</p>
-<div class="panel">
-<div id="map"></div>
-<p class="note">Harita yüklenmezse internet bağlantını kontrol et. Konumlar bilgilendirme amaçlıdır; yola çıkmadan önce yol tarifini kontrol et.</p>
-<div class="map-list" id="mapList"></div>
-</div>
-</section>
+<section id="tarih">
+ <div class="section-heading">
+  <div class="eyebrow" style="color:#8b692f">Geçmişin izleri</div>
+  <h2>Taşlara, ahşaba ve sokaklara sinen tarih</h2>
+  <p class="lead">Vezirköprü’yü gezerken yalnızca yapılara bakma; bu yapıların hangi yaşam biçimlerini, ticareti ve gelenekleri taşıdığını da düşün.</p>
+ </div>
 
-<section id="tarihi">
-<h2>🏛️ Tarihî yerler</h2>
-<p class="intro">Eski köprüler, geleneksel evler ve tarihî yapılar Vezirköprü’nün geçmişini anlatıyor.</p>
-<div class="cards" id="historyCards"></div>
+ <article class="feature">
+  <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1200&q=85" alt="Geleneksel tarihî mimari örneği">
+  <div class="feature-body">
+   <span class="tag">1 · Tarihî yapı</span>
+   <h3>Taşhan</h3>
+   <p>Taşhan adı, geçmişte yolcuların, tüccarların ve malların bir araya geldiği han kültürünü hatırlatır. Anadolu’daki hanlar yalnızca konaklama yeri değildi: yolculuk yapanlar burada dinlenir, alışveriş yapılır, haberler paylaşılırdı. Bu nedenle tarihî bir hanı gezerken binanın mimarisi kadar, geçmişteki şehir yaşamındaki rolünü de düşünmek gerekir.</p>
+   <p>Vezirköprü’nün tarihî merkezini keşfederken Taşhan’ı çevresindeki çarşı dokusuyla birlikte incele. Yapının açık alanlarına, duvarlarına ve çevredeki eski sokaklara dikkat et.</p>
+   <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Taşhan+Vezirköprü">Konumunu incele ↗</a>
+  </div>
+ </article>
+
+ <article class="feature">
+  <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1200&q=85" alt="Tarihî çarşı mimarisi örneği">
+  <div class="feature-body">
+   <span class="tag">2 · Ticaret kültürü</span>
+   <h3>Bedesten ve Arasta</h3>
+   <p>Bedesten ve arastalar, geleneksel şehirlerin ticaret hayatını anlamak için önemli yapılardır. Bedesten, değerli malların satıldığı ve korunduğu kapalı ticaret alanı olarak; arasta ise çoğunlukla belirli mesleklerin dükkânlarının yan yana sıralandığı çarşı düzeniyle bilinir.</p>
+   <p>Vezirköprü’nün tarihî ticaret dokusu, ilçenin geçmişteki ekonomik canlılığını anlamaya yardımcı olur. Burayı gezerken dükkânların sıralanışını, sokakların ölçeğini ve eski ticaret alanlarının bugünkü yaşamla nasıl iç içe geçtiğini gözlemle.</p>
+   <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Bedesten+Arasta+Vezirköprü">Konumunu incele ↗</a>
+  </div>
+ </article>
+
+ <article class="feature">
+  <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1200&q=85" alt="Geleneksel ahşap ev mimarisi örneği">
+  <div class="feature-body">
+   <span class="tag">3 · Geleneksel mimari</span>
+   <h3>Tarihî Vezirköprü Evleri</h3>
+   <p>Eski evler, geçmişte insanların nasıl yaşadığını anlatan sessiz belgelerdir. Vezirköprü’nün geleneksel evlerinde ahşap işçiliği, taş ve ahşabın birlikte kullanımı, cephe düzeni ve avlu kültürü gibi ayrıntılar dikkat çeker. Bu mimari, yalnızca estetik bir tercih değil, gündelik yaşamın ve yerel ustalığın da yansımasıdır.</p>
+   <p>Bir evi incelerken pencerelerin konumuna, katların düzenine, ahşap ayrıntılara ve sokağa nasıl açıldığına bak. Tarihî yapıların korunması, ilçenin kimliğinin gelecek kuşaklara aktarılması açısından önemlidir.</p>
+   <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Tarihi+Vezirköprü+Evleri">Konumunu incele ↗</a>
+  </div>
+ </article>
+
+ <article class="feature">
+  <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1200&q=85" alt="Arkeolojik alan ve tarihî kalıntılar örneği">
+  <div class="feature-body">
+   <span class="tag">4 · Arkeoloji</span>
+   <h3>Oymaağaç Höyüğü ve eski uygarlıklar</h3>
+   <p>Oymaağaç Höyüğü, Vezirköprü çevresinin çok eski dönemlere uzanan geçmişini araştıran arkeolojik alanlardan biridir. Arkeologlar, toprağın altında kalan yapı izlerini, seramikleri ve diğer buluntuları inceleyerek eski yerleşimlerin nasıl örgütlendiğini anlamaya çalışır.</p>
+   <p>Bu tür alanların önemi, geçmişe dair bütün bilgilerin yazılı kaynaklarda bulunmamasıdır. Bazen küçük bir eşya ya da yapı izi, insanların nasıl yaşadığına, neler ürettiğine ve çevreleriyle nasıl ilişki kurduğuna dair önemli ipuçları sunar. Arkeolojik alanlar hassastır; buluntulara dokunmamak ve koruma kurallarına uymak gerekir.</p>
+   <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Oymaağaç+Höyüğü+Vezirköprü">Konumunu incele ↗</a>
+  </div>
+ </article>
 </section>
 
 <section id="doga">
-<h2>🌲 Doğanın güzellikleri</h2>
-<p class="intro">Kanyonlar ve ormanlarla çevrili bu bölgede doğayı keşfet.</p>
-<div class="cards" id="natureCards"></div>
+ <div class="section-heading">
+  <div class="eyebrow" style="color:#8b692f">Suyun ve ormanın hikâyesi</div>
+  <h2>Doğayla buluş</h2>
+  <p class="lead">Vezirköprü’de doğa, yalnızca seyredilecek bir manzara değil; yürümek, dinlenmek ve çevreyi daha yakından tanımak için bir davet.</p>
+ </div>
+ <div class="cards">
+  <article class="card">
+   <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85" alt="Doğa ve göl manzarası">
+   <div class="card-body">
+    <span class="tag">5 · Doğa harikası</span>
+    <h3>Şahinkaya Kanyonu</h3>
+    <p>Kızılırmak üzerinde, Altınkaya Baraj Gölü içinde bulunan Şahinkaya Kanyonu; dik kayalıkları ve etkileyici su manzarasıyla Vezirköprü’nün en bilinen doğal alanlarından biridir. Kanyonun görünümü, akarsuyun kayaları aşındırmasıyla şekillenen uzun jeolojik sürecin izlerini taşır.</p>
+    <p>Suyun içinden yükselen sarp yamaçlar, manzaranın ölçeğini daha da etkileyici kılar. Bölgede uygun koşullarda tekne gezileri yapılabilir. Ziyaret öncesinde hareket noktalarını ve tur saatlerini kontrol etmek, doğaya saygılı davranmak ve güvenlik uyarılarına uymak önemlidir.</p>
+    <a class="small-link" target="_blank" rel="noopener" href="https://vezirkopru.gov.tr/sahinkaya-kanyonu">Kanyon hakkında resmî bilgi ↗</a>
+   </div>
+  </article>
+  <article class="card">
+   <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=85" alt="Yoğun yeşil orman">
+   <div class="card-body">
+    <span class="tag">6 · Yeşil kaçış</span>
+    <h3>Kunduz Ormanları</h3>
+    <p>Kunduz’un ormanlık alanları, şehrin gürültüsünden uzaklaşıp doğayı dinlemek isteyenler için cazip bir rota sunar. Ağaçların oluşturduğu gölgeler, mevsimlere göre değişen renkler ve orman havası yürüyüşleri daha keyifli hâle getirir.</p>
+    <p>Orman gezilerinde belirlenmiş yolları kullanmak, ateş yakma kurallarına uymak, çöpleri geride bırakmamak ve yaban hayatını rahatsız etmemek gerekir. Hava koşullarını ve yol durumunu kontrol ederek hazırlıklı gitmek iyi bir fikirdir.</p>
+    <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kunduz+Ormanları+Vezirköprü">Konumunu incele ↗</a>
+   </div>
+  </article>
+  <article class="card">
+   <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1000&q=85" alt="Tabiat parkında yürüyüş yolu">
+   <div class="card-body">
+    <span class="tag">7 · Açık hava</span>
+    <h3>Vezirsuyu Tabiat Parkı</h3>
+    <p>Vezirsuyu Tabiat Parkı, ağaçların ve doğal manzaranın içinde vakit geçirmek isteyenler için değerlendirilebilecek alanlardan biridir. Piknik ya da doğa gezisi planlarken çevrenin korunmasına dikkat etmek, sessizliği ve temizliği gözetmek gerekir.</p>
+    <p>Özellikle hafta sonu planlarında ulaşım, hava durumu ve parkın güncel kullanım koşullarını önceden kontrol etmek gezini daha rahat hâle getirir.</p>
+    <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Vezirsuyu+Tabiat+Parkı">Konumunu incele ↗</a>
+   </div>
+  </article>
+  <article class="card">
+   <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1000&q=85" alt="Geniş doğal manzara">
+   <div class="card-body">
+    <span class="tag">8 · Gezi rotası</span>
+    <h3>Vezirköprü çevresini keşfet</h3>
+    <p>İlçenin doğal güzelliklerini gezerken rotanı tek bir noktaya bağlı tutmak zorunda değilsin. Günün bir bölümünü tarihî merkezde geçirip ardından doğa alanlarına yönelmek, Vezirköprü’nün farklı yönlerini aynı gezi içinde görmeni sağlar.</p>
+    <p>Mesafeleri ve yol koşullarını önceden kontrol et; doğa alanlarında telefon çekiminin sınırlı olabileceğini de hesaba kat.</p>
+    <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Vezirköprü+Samsun">Gezi noktalarını keşfet ↗</a>
+   </div>
+  </article>
+ </div>
 </section>
 
-<section id="lezzet">
-<h2>🥘 Yerel lezzetler</h2>
-<div class="cards">
-<article class="place">
-<img loading="lazy" alt="Vezirköprü yöresel yemekleri" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80">
-<div class="place-body"><h3>Yöresel yemekler</h3><p>Vezirköprü’deki lokantalarda yerel yemekleri ve Karadeniz mutfağından farklı tatları keşfet.</p><a href="https://www.google.com/maps/search/restoran+Vezirk%C3%B6pr%C3%BC/" target="_blank" rel="noopener">Yemek yerlerini bul ↗</a></div>
-</article>
-<article class="place">
-<img loading="lazy" alt="Türk çayı ve sofra" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=80">
-<div class="place-body"><h3>Kafeler ve dinlenme</h3><p>Gezi arasında ilçedeki kafe ve restoranlarda dinlenmek için seçenekleri incele.</p><a href="https://www.google.com/maps/search/kafe+Vezirk%C3%B6pr%C3%BC/" target="_blank" rel="noopener">Kafeleri bul ↗</a></div>
-</article>
-</div>
+<section id="semaver">
+ <div class="section-heading">
+  <div class="eyebrow" style="color:#8b692f">El emeği ve gelenek</div>
+  <h2>Vezirköprü semaveri: Bir çaydan çok daha fazlası</h2>
+  <p class="lead">Bazı eşyalar bir yerin kimliğini anlatır. Vezirköprü’nün yassı semaveri de el işçiliğini, çay geleneğini ve misafirperverliği bir araya getirir.</p>
+ </div>
+ <article class="feature">
+  <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=1200&q=85" alt="Çay hazırlama ve çay kültürü">
+  <div class="feature-body">
+   <span class="tag">Yerel kültür</span>
+   <h3>Yassı biçimi neden önemli?</h3>
+   <p>Vezirköprü semaveri, yuvarlak modellerden ayrılan yassı biçimiyle tanınır. Geleneksel üretimde ustalık; metalin şekillendirilmesini, parçaların birleştirilmesini ve semaverin kullanılabilir hâle getirilmesini kapsar. Bu beceriler, el emeğinin kuşaktan kuşağa aktarılmasıyla yaşatılır.</p>
+   <p>Yassı gövde, semaverin ayırt edici özelliklerinden biridir. Semaverin işlevi yalnızca su ısıtmak değildir: çayın uzun süre sıcak kalmasına yardımcı olur ve çay etrafında sohbet etme alışkanlığını destekler. Misafire çay sunmak, Anadolu’nun pek çok yerinde olduğu gibi Vezirköprü’de de sıcak bir karşılamanın simgesidir.</p>
+   <p>Vezirköprü Semaveri, 2017 yılında coğrafi işaretle tescillenmiştir. Bu tescil, ürünün belirli bir yöreyle özdeşleşen niteliğini ve geleneksel üretim bilgisini tanımaya yardımcı olur. Semaver bu yönüyle hem kullanılabilir bir eşya hem de yerel kültürün hatırasıdır.</p>
+   <p>İlçeyi ziyaret ettiğinde semaver ustalarının emeğini ve üretim geleneğini araştırabilir, yerel üreticilerden bilgi alabilirsin. Böylece satın aldığın bir ürünün arkasındaki hikâyeyi de öğrenmiş olursun.</p>
+   <a class="small-link" target="_blank" rel="noopener" href="https://kulturportali.gov.tr/turkiye/samsun/nealinir/semaver799439">Semaver hakkında Kültür Portalı bilgisi ↗</a>
+  </div>
+ </article>
+ <div class="quote">Bir semaverde kaynayan yalnızca su değildir; sohbet, misafirperverlik ve ustaların yıllar içinde biriktirdiği emek de bu geleneğin parçasıdır.</div>
 </section>
-</main>
 
-<footer>
-<strong>💚 Vezirköprü Keşfet</strong>
-<p>Geçmişi tanı, doğayı keşfet, kültürü yaşat.</p>
-<p>Vezirköprü Anadolu Lisesi — Burcu Ateş tarafından tasarlanmıştır.</p>
-<a href="#kapak">↑ Ana sayfaya dön</a>
-</footer>
+<section id="lezzetler">
+ <div class="section-heading">
+  <div class="eyebrow" style="color:#8b692f">Sofradan hikâyeler</div>
+  <h2>Vezirköprü’nün lezzetlerini tanı</h2>
+  <p class="lead">Bir yeri tanımanın yollarından biri de sofrasına kulak vermektir. Yerel lokantaları gezerken menüdeki yemeklerin hazırlanışını ve yöredeki yemek alışkanlıklarını sormayı unutma.</p>
+ </div>
+ <article class="feature">
+  <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85" alt="Geleneksel yemek sunumu">
+  <div class="feature-body">
+   <span class="tag">Yöresel sofra</span>
+   <h3>Yemeklerin ardındaki kültür</h3>
+   <p>Yöresel mutfak, yalnızca malzemelerden oluşmaz. Mevsimlere göre hazırlanan yiyecekler, aile sofraları, misafir ağırlama ve tariflerin kuşaktan kuşağa aktarılması da yemek kültürünün bir parçasıdır.</p>
+   <p>Vezirköprü’de yemek yerken işletmelere hangi yemeklerin yörede daha çok tercih edildiğini sorabilir, malzemeleri ve hazırlanış biçimlerini öğrenebilirsin. Böylece yalnızca bir öğün yemekle kalmaz, ilçenin günlük yaşamına dair de fikir edinirsin.</p>
+  </div>
+ </article>
+</section>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-const places=[
-{id:1,name:"Taşhan",kind:"Tarihî yapı",lat:41.1430,lng:35.4550,desc:"Vezirköprü’nün tarihî dokusunu yansıtan han yapısıdır. Eski ticaret ve konaklama kültürünü hatırlatan önemli yapılardan biridir.",img:"https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80",url:"https://www.google.com/maps/search/Ta%C5%9Fhan+Vezirk%C3%B6pr%C3%BC/"},
-{id:2,name:"Bedesten ve Arasta",kind:"Tarihî çarşı",lat:41.1435,lng:35.4560,desc:"Vezirköprü’nün geleneksel ticaret yaşamını yansıtan tarihî çarşı alanıdır. İlçenin kültürel mirasını tanımak için önemli bir duraktır.",img:"https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=900&q=80",url:"https://www.google.com/maps/search/Bedesten+Arasta+Vezirk%C3%B6pr%C3%BC/"},
-{id:3,name:"Kurt Köprü",kind:"Tarihî köprü",lat:41.0950,lng:35.6500,desc:"İstavroz Çayı üzerindeki köprü, sivri kemerleri ve taş-tuğla örgüsüyle dikkat çeker. Mimari özellikleri yapının Orta Çağ’a uzanan geçmişine işaret eder.",img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80",url:"https://www.google.com/maps/search/Kurt+K%C3%B6pr%C3%BC+Vezirk%C3%B6pr%C3%BC/"},
-{id:4,name:"Vezirköprü Evleri",kind:"Geleneksel mimari",lat:41.1420,lng:35.4530,desc:"Geleneksel konut mimarisi, ahşap ayrıntılar ve eski sokak dokusuyla ilçenin geçmişteki günlük yaşamına dair izler taşır.",img:"https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=900&q=80",url:"https://www.google.com/maps/search/Vezirk%C3%B6pr%C3%BC+tarih%C3%AE+evler/"},
-{id:5,name:"Şahinkaya Kanyonu",kind:"Doğal güzellik",lat:41.2650,lng:35.3890,desc:"Altınkaya Baraj Gölü üzerinde yer alan kanyon, Kızılırmak’ın şekillendirdiği sarp kayalıkları ve etkileyici manzarasıyla tanınır.",img:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80",url:"https://www.google.com/maps/search/%C5%9Eahinkaya+Kanyonu/"},
-{id:6,name:"Vezirsuyu Tabiat Parkı",kind:"Tabiat parkı",lat:41.2200,lng:35.3400,desc:"Vezirköprü çevresinde doğada vakit geçirmek, yürüyüş yapmak ve manzaranın tadını çıkarmak için ziyaret edilen doğal alanlardan biridir.",img:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80",url:"https://www.google.com/maps/search/Vezirsuyu+Tabiat+Park%C4%B1/"},
-{id:7,name:"Oymaağaç Höyüğü",kind:"Arkeolojik alan",lat:41.0800,lng:35.5100,desc:"Oymaağaç çevresi, eski yerleşim tarihine ışık tutan arkeolojik araştırmalarla bilinir. Ziyaret öncesinde alana erişim ve ziyaret koşullarını kontrol et.",img:"https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=900&q=80",url:"https://www.google.com/maps/search/Oymaa%C4%9Fa%C3%A7+H%C3%B6y%C3%BC%C4%9F%C3%BC/"},
-{id:8,name:"Kunduz Ormanları",kind:"Doğal alan",lat:41.0200,lng:35.6200,desc:"Geniş ormanlık alanları ve doğal manzaralarıyla bilinen Kunduz, doğayla baş başa vakit geçirmek isteyenler için bir seçenektir.",img:"https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80",url:"https://www.google.com/maps/search/Kunduz+Ormanlar%C4%B1+Vezirk%C3%B6pr%C3%BC/"}
-];
-
-function makeCard(p){
- return `<article class="place">
- <img loading="lazy" src="${p.img}" alt="${p.name} fotoğrafı">
- <div class="place-body"><p class="note">${p.id}. DURAK · ${p.kind}</p>
- <h3>${p.name}</h3><p>${p.desc}</p>
- <a href="${p.url}" target="_blank" rel="noopener">Konumu ve yol tarifini aç ↗</a></div></article>`;
-}
-document.getElementById("historyCards").innerHTML=places.filter(p=>[1,2,3,4,7].includes(p.id)).map(makeCard).join("");
-document.getElementById("natureCards").innerHTML=places.filter(p=>[5,6,8].includes(p.id)).map(makeCard).join("");
-document.getElementById("mapList").innerHTML=places.map(p=>`<button class="map-item" type="button" data-place="${p.id}"><span class="num">${p.id}</span><span><strong>${p.name}</strong><br><span class="note">${p.kind}</span><br>${p.desc}</span></button>`).join("");
+<section id="yemek">
+ <div class="section-heading">
+  <div class="eyebrow" style="color:#8b692f">Yerel mekânlar</div>
+  <h2>Yemek yerleri ve kafeler</h2>
+  <p class="lead">Önce mekânları tanı, sonra konumlarını incele. Aşağıdaki işletme fotoğrafları örnek görsellerle gösterilmiştir; gerçek işletme fotoğraflarıyla güncellenmelidir. İşletme bilgilerini gitmeden önce doğrula.</p>
+ </div>
+ <div class="cards">
+  <article class="card">
+   <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=85" alt="Restoran iç mekânı örnek fotoğrafı">
+   <div class="card-body">
+    <h3>Teker Et Lokantası</h3>
+    <p>Et yemekleri tercih edenlerin değerlendirebileceği yerel lokantalardan biri. Menü, günlük yemek seçenekleri ve servis hakkında güncel bilgiyi işletmeden öğrenebilirsin. Restoranın gerçek fotoğrafı ve doğrulanmış menü bilgileri eklendiğinde bu tanıtım daha ayrıntılı hâle getirilebilir.</p>
+    <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Teker+Et+Lokantası+Vezirköprü">Konumu incele ↗</a>
+   </div>
+  </article>
+  <article class="card">
+   <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=85" alt="Kafe ve restoran ortamı örnek fotoğrafı">
+   <div class="card-body">
+    <h3>Kanyon Kafe Restoran</h3>
+    <p>Şahinkaya Kanyonu çevresinde gezi planlayanların yemek veya dinlenme molası için değerlendirebileceği bir mekân. Ziyaret öncesinde açık olduğu saatleri, menüsünü ve kanyon gezilerine yakınlığını kontrol etmek faydalı olur.</p>
+    <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Kanyon+Kafe+Restoran+Vezirköprü">Konumu incele ↗</a>
+   </div>
+  </article>
+  <article class="card">
+   <img class="photo" loading="lazy" src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=85" alt="Restoran masaları örnek fotoğrafı">
+   <div class="card-body">
+    <h3>Taşhan Cafe &amp; Restaurant</h3>
+    <p>İlçenin tarihî merkezini gezerken mola vermek isteyenlerin araştırabileceği mekânlardan biri. Tarihî çarşı gezisiyle yemek molasını aynı güne planlayarak çevredeki sokakları daha rahat keşfedebilirsin.</p>
+    <a class="small-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Taşhan+Cafe+Restaurant+Vezirköprü">Konumu incele ↗</a>
+   </div>
+  </article>
+  <article class="card">
+   <img class="photdata-place="${p.id}"><span class="num">${p.id}</span><span><strong>${p.name}</strong><br><span class="note">${p.kind}</span><br>${p.desc}</span></button>`).join("");
 
 if(window.L){
  const map=L.map("map").setView([41.15,35.47],9);
