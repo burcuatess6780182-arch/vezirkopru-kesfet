@@ -3,119 +3,217 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Vezirköprü'yü Keşfet</title>
+<title>Vezirköprü'yü Keşfet 🌿</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f4f7f2;color:#20332a}
-header{background:linear-gradient(135deg,#145c3b,#32965c);color:white;padding:28px 18px;text-align:center}
-header h1{margin:0 0 10px;font-size:30px}
-header p{margin:0;font-size:16px}
-.container{max-width:1100px;margin:auto;padding:16px}
-h2{color:#17643f;margin-top:28px}
-#map{height:380px;border-radius:14px;border:2px solid #d7e4d8}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.card{background:white;border-radius:12px;padding:16px;box-shadow:0 3px 12px #0001}
-.card h3{color:#17643f;margin-top:0}
-a.button{display:inline-block;background:#17643f;color:white;padding:10px 13px;border-radius:8px;text-decoration:none;margin-top:8px}
-.info{background:#e4f1e6;padding:15px;border-radius:12px}
-footer{text-align:center;padding:25px;background:#173d2b;color:white;margin-top:30px}
+body{margin:0;font-family:Arial,sans-serif;background:#f0f8ef;color:#203c2c}
+header{
+ color:white;text-align:center;padding:42px 16px;
+ background:linear-gradient(135deg,#087443,#20b56a,#04a6a6);
+ border-radius:0 0 28px 28px
+}
+header h1{font-size:clamp(28px,6vw,43px);margin:0 0 12px}
+header p{font-size:17px;line-height:1.6;margin:0}
+.container{max-width:1100px;margin:auto;padding:18px}
+.intro{
+ background:linear-gradient(120deg,#fff2b9,#d9f7df);
+ padding:18px;border-radius:18px;line-height:1.7;
+ border:1px solid #d5ebbd
+}
+h2{color:#087443;margin-top:30px}
+#map{height:420px;border-radius:20px;border:4px solid white;box-shadow:0 5px 18px #174b2c22}
+.legend{font-size:13px;color:#54705c;margin:10px 2px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px}
+.card{
+ background:white;border-radius:18px;padding:18px;
+ box-shadow:0 5px 16px #174b2c12;
+ border-top:5px solid #20b56a
+}
+.card:nth-child(4n+2){border-top-color:#08a6a6}
+.card:nth-child(4n+3){border-top-color:#f4bd38}
+.card:nth-child(4n+4){border-top-color:#f17b45}
+.card h3{margin:0 0 10px;color:#087443;font-size:19px}
+.card p{line-height:1.6;font-size:14px}
+.button{
+ display:inline-block;text-decoration:none;color:white;
+ background:linear-gradient(120deg,#087443,#20b56a);
+ padding:11px 14px;border-radius:10px;font-weight:bold;
+ margin-top:5px
+}
+.button:active{transform:scale(.98)}
+.food{
+ background:linear-gradient(135deg,#fff0d9,#ffe1c6);
+ border-radius:18px;padding:18px;line-height:1.7
+}
+.route{
+ background:linear-gradient(120deg,#d9f6ef,#dceaff);
+ border-radius:18px;padding:18px;line-height:1.7
+}
+footer{
+ margin-top:32px;background:#075333;color:white;
+ text-align:center;padding:25px;line-height:1.7
+}
 </style>
 </head>
 <body>
 <header>
 <h1>🌿 Vezirköprü'yü Keşfet</h1>
-<p>Tarihi, doğası, lezzetleri ve keşfedilecek güzellikleri</p>
+<p>💚 Doğa • Tarih • Lezzet • Macera</p>
+<p>Saklı güzellikleri keşfetmeye hazır mısın?</p>
 </header>
 
 <main class="container">
-<div class="info">
-<strong>Vezirköprü gezi rehberine hoş geldin!</strong>
-<p>Haritadaki işaretlere dokunarak gezi noktalarını keşfet. Yol tarifi için yer kartlarındaki düğmeleri kullanabilirsin.</p>
+<div class="intro">
+<strong>🌈 Vezirköprü gezi rehberine hoş geldin!</strong>
+<p>Turkuaz sular, yemyeşil ormanlar ve tarihî sokaklar seni bekliyor. Haritadaki işaretlere dokun, keşfetmek istediğin yeri seç ve yol tarifini aç.</p>
 </div>
 
-<h2>📍 Keşif Haritası</h2>
+<h2>🗺️ Keşif Haritası</h2>
 <div id="map"></div>
+<p class="legend">📍 İşaretlere dokunarak yer bilgilerini ve yol tarifi bağlantılarını açabilirsin. Bazı işaretler yaklaşık konumdadır.</p>
 
-<h2>🏞️ Gezilecek Yerler</h2>
+<h2>🏞️ Doğa ve Manzara</h2>
 <div class="cards">
 <div class="card">
-<h3>Şahinkaya Kanyonu</h3>
-<p>Kızılırmak üzerinde yükselen etkileyici kayalıkları ve doğal manzarasıyla tanınan bir doğa noktası.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Şahinkaya+Kanyonu">Yol tarifi</a>
+<h3>💎 Şahinkaya Kanyonu</h3>
+<p>Kızılırmak'ın turkuaz suları ve görkemli kayalıklarıyla Vezirköprü'nün en etkileyici doğal güzelliklerinden biri.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Şahinkaya+Kanyonu">📍 Konumu aç</a>
 </div>
 <div class="card">
-<h3>Kunduz Ormanları</h3>
-<p>Orman havası, doğa yürüyüşleri ve manzara molaları için keşfedilebilecek doğal alan.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kunduz+Ormanları+Vezirköprü">Yol tarifi</a>
+<h3>🌲 Kunduz Ormanları</h3>
+<p>Yeşillikler içinde doğa havası almak, manzara seyretmek ve açık havada vakit geçirmek için bir rota.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kunduz+Ormanları+Vezirköprü">📍 Konumu aç</a>
 </div>
 <div class="card">
-<h3>Kurtköprü</h3>
-<p>Bölgenin tarihi köprülerinden biri. Gezi öncesinde konum ve ziyaret koşullarını kontrol et.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kurtköprü+Vezirköprü">Yol tarifi</a>
+<h3>🦌 Geyik Üretme Çiftliği</h3>
+<p>Kunduz bölgesindeki yaban hayatı ve geyik üretimiyle ilgili alan. Ziyaret imkânını önceden kontrol et.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Geyik+Üretme+Çiftliği+Vezirköprü">📍 Konumu aç</a>
 </div>
 <div class="card">
-<h3>Tarihi Taşhan</h3>
-<p>Vezirköprü'nün tarihi dokusunu keşfetmek için merkezdeki önemli duraklardan biri.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Taşhan+Vezirköprü">Yol tarifi</a>
+<h3>🌳 Vezirsuyu Tabiat Parkı</h3>
+<p>Doğayla buluşmak, manzara seyretmek ve açık havada dinlenmek için değerlendirilebilecek bir durak.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirsuyu+Tabiat+Parkı">📍 Konumu aç</a>
+</div>
+</div>
+
+<h2>🏛️ Tarihî Vezirköprü</h2>
+<div class="cards">
+<div class="card">
+<h3>🏠 Vezirköprü Evleri</h3>
+<p>Geleneksel mimarisiyle ilçenin tarihî karakterini yansıtan evleri ve sokakları keşfet.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirköprü+Tarihi+Evleri">📍 Konumu aç</a>
 </div>
 <div class="card">
-<h3>Vezirköprü Tarihi Merkez</h3>
-<p>Tarihi sokakları ve geleneksel mimariyi keşfetmek için merkezde yürüyüş yap.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirköprü+tarihi+merkez">Yol tarifi</a>
+<h3>🧱 Taşhan</h3>
+<p>İlçenin tarihî dokusunu tanımak için gezi listene ekleyebileceğin önemli duraklardan biri.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Taşhan+Vezirköprü">📍 Konumu aç</a>
 </div>
 <div class="card">
-<h3>Geyik Üretme Çiftliği</h3>
-<p>Doğal yaşamla ilgili bu noktayı ziyaret etmeden önce güncel ziyaret bilgilerini araştır.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Geyik+Üretme+Çiftliği+Vezirköprü">Konumu bul</a>
+<h3>🛍️ Bedesten ve Arasta</h3>
+<p>Tarihî çarşı dokusunu ve geleneksel ticaret kültürünü keşfet.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bedesten+Arasta+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🕰️ Saat Kulesi</h3>
+<p>İlçe merkezinde tarihî çevreyi gezerken uğrayabileceğin tanınmış noktalardan biri.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Saat+Kulesi+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🌳 Tarihî Çınar Ağacı</h3>
+<p>Vezirköprü'nün gezi rehberlerinde yer alan tarihî duraklarından biri.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Tarihi+Çınar+Ağacı+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🕌 Fazıl Ahmet Paşa Medresesi</h3>
+<p>İlçenin kültürel ve tarihî mirasını tanımak isteyenler için araştırmaya değer bir durak.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Fazıl+Ahmet+Paşa+Medresesi+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🕌 Orta Cami</h3>
+<p>İlçenin tarihî ibadet yapılarından birini keşfet.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Orta+Cami+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🌉 Kurt Köprü</h3>
+<p>Tekkekıran çevresindeki İstavroz Çayı üzerinde bulunan tarihî köprü ve çevresini keşfet.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kurt+Köprü+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🏺 Oymaağaç Höyüğü</h3>
+<p>Bölgenin eski yerleşim geçmişiyle bağlantılı arkeolojik alan. Ziyaret koşullarını önceden araştır.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Oymaağaç+Höyüğü+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🏡 Abdullah Derici Konağı</h3>
+<p>Vezirköprü'nün tarihî konak ve kültürel miras duraklarından biri.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Abdullah+Derici+Konağı+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🏛️ Taşmedrese</h3>
+<p>İlçenin tarihî mekânları arasında bulunan kültürel bir durak.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Taşmedrese+Vezirköprü">📍 Konumu aç</a>
+</div>
+<div class="card">
+<h3>🌉 Tarihî Yeni Hamam</h3>
+<p>Vezirköprü'nün tarihî merkezini gezerken araştırabileceğin geleneksel yapılardan biri.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Tarihi+Yeni+Hamam+Vezirköprü">📍 Konumu aç</a>
 </div>
 </div>
 
 <h2>🍽️ Yerel Lezzetler</h2>
-<div class="cards">
-<div class="card">
-<h3>Vezirköprü'de Ne Yenir?</h3>
-<p>Yerel lokantaları, yöresel yemekleri ve ev yemekleri sunan işletmeleri keşfet.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirköprü+restoran">Yemek yerlerini bul</a>
-</div>
-<div class="card">
-<h3>☕ Kafe ve Çay Molası</h3>
-<p>Gezi arasında dinlenmek için ilçe merkezindeki kafe ve çay bahçelerine göz at.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirköprü+kafe">Kafeleri bul</a>
-</div>
+<div class="food">
+<strong>😋 Vezirköprü'nün lezzetlerini keşfet!</strong>
+<p>Katık böreği, kaz tiridi ve yöresel yemekler hakkında bilgi edin; işletme ve menü bilgilerini gitmeden önce kontrol et.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirköprü+restoran">🍴 Restoranları bul</a>
+<a class="button" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirköprü+kafe">☕ Kafeleri bul</a>
 </div>
 
-<h2>🗺️ Gezi Rotanı Oluştur</h2>
-<div class="info">
-<p>Gitmek istediğin noktaları seçerek kendi rotanı planlayabilirsin. Yol ve ulaşım durumunu gitmeden önce kontrol et.</p>
-<a class="button" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Vezirköprü+Samsun&destination=Şahinkaya+Kanyonu&travelmode=driving">Örnek rotayı aç</a>
+<h2>🚗 Gezi Rotanı Planla</h2>
+<div class="route">
+<p>Önce tarihî merkezi gez, sonra doğa rotanı seç. Kanyon, orman ve tabiat parkı gibi duraklar için ulaşım süresini ve yol durumunu önceden kontrol et.</p>
+<a class="button" target="_blank" href="https://www.google.com/maps/dir/?api=1&origin=Vezirköprü+Samsun&destination=Şahinkaya+Kanyonu&travelmode=driving">🧭 Kanyona yol tarifi</a>
 </div>
 </main>
 
 <footer>
-<p>Vezirköprü'yü Keşfet 🌿</p>
-<p>Doğayı koru, tarihi yaşat, güzel anılar biriktir.</p>
+<strong>🌿 Vezirköprü'yü Keşfet</strong>
+<p>Doğayı koru • Tarihi yaşat • Yeni yerler keşfet 💚</p>
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const map=L.map('map').setView([41.14,35.45],10);
+
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-attribution:'&copy; OpenStreetMap katkıcıları',
-maxZoom:19
+ attribution:'&copy; OpenStreetMap katkıcıları',
+ maxZoom:19
 }).addTo(map);
 
 const places=[
-['Vezirköprü Merkez',41.143,35.454,'İlçe merkezi ve tarihi çevre.'],
-['Şahinkaya Kanyonu',41.087,35.012,'Etkileyici kanyon manzaralarıyla bilinen doğal alan.'],
-['Kunduz Ormanları',41.05,35.55,'Ormanlık alan ve doğa gezisi noktası.'],
-['Kurtköprü',41.25,35.35,'Tarihi köprü ve çevresini keşfet.'],
-['Taşhan',41.143,35.455,'Vezirköprü merkezindeki tarihi durak.']
+['Vezirköprü Merkez',41.143,35.454,'Tarihî merkez ve çarşı çevresi.'],
+['Şahinkaya Kanyonu',41.087,35.012,'Kızılırmak üzerindeki etkileyici kanyon.'],
+['Kunduz Ormanları',41.05,35.55,'Ormanlık doğa alanı.'],
+['Geyik Üretme Çiftliği',41.06,35.56,'Ziyaret bilgilerini önceden kontrol et.'],
+['Vezirsuyu Tabiat Parkı',41.10,35.06,'Doğa ve açık hava durağı.'],
+['Kurt Köprü',41.25,35.35,'Tarihî köprü.'],
+['Taşhan',41.143,35.455,'Tarihî merkezdeki durak.'],
+['Bedesten ve Arasta',41.143,35.453,'Tarihî çarşı alanı.'],
+['Saat Kulesi',41.143,35.454,'İlçe merkezindeki kule.'],
+['Tarihî Çınar Ağacı',41.144,35.454,'Tarihî gezi durağı.'],
+['Fazıl Ahmet Paşa Medresesi',41.143,35.452,'Tarihî medrese.'],
+['Orta Cami',41.142,35.454,'Tarihî cami.'],
+['Oymaağaç Höyüğü',41.20,35.60,'Arkeolojik alan; ziyaret koşullarını araştır.'],
+['Abdullah Derici Konağı',41.145,35.45,'Tarihî konak.'],
+['Taşmedrese',41.142,35.453,'Tarihî mekân.'],
+['Tarihî Yeni Hamam',41.143,35.453,'Tarihî hamam.'],
+['Vezirköprü Evleri',41.144,35.455,'Geleneksel mimari.']
 ];
 
 places.forEach(p=>{
-L.marker([p[1],p[2]]).addTo(map)
-.bindPopup('<b>'+p[0]+'</b><br>'+p[3]+'<br><a target="_blank" href="https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p[0]+' Vezirköprü')+'">Yol tarifi</a>');
+ const google='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(p[0]+' Vezirköprü Samsun');
+ L.marker([p[1],p[2]]).addTo(map)
+ .bindPopup('<strong>'+p[0]+'</strong><br>'+p[3]+'<br><a target="_blank" rel="noopener" href="'+google+'">Google Maps yol tarifi</a>');
 });
 </script>
 </body>
