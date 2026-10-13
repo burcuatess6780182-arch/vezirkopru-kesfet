@@ -1,48 +1,13 @@
-<!doctype html>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="utf-8">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vezirköprü'nün Dijital Atlası</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-:root{--green:#174638;--gold:#e6c27a;--ink:#17231e}
 :root{--green:#185b40;--cream:#f5edcf;--ink:#263b30}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,sans-serif;background:#f3f5ef;color:var(--ink);line-height:1.65}
-header{background:var(--green);color:white;padding:18px;position:sticky;top:0;z-index:2}
-nav{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px}
-nav a{color:white;text-decoration:none;font-weight:bold}
-.hero{padding:75px 20px;text-align:center;color:white;background:linear-gradient(120deg,#092d24ed,#17463899),url('IMG_432001b6-a68b-4774-bd32-fa87d8fc1f3e.jpg') center/cover}
-.hero h1{font-size:clamp(34px,7vw,62px);line-height:1.15}
-.hero h1 span{color:#f0cf86}
-.hero p{font-size:19px}
-.button{display:inline-block;background:var(--gold);color:#24352b;padding:12px 20px;border-radius:12px;text-decoration:none;font-weight:bold}
-.credit{font-size:12px;margin-top:35px}
-.intro{text-align:center;background:#dcebe1;padding:25px}
-.section{max-width:1150px;margin:auto;padding:38px 18px}
-.section h2{color:var(--green);font-size:32px}
-.lead{color:#59665e}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:22px}
-.card{background:white;border-radius:20px;overflow:hidden;box-shadow:0 5px 20px #0001;border:1px solid #dfe7df}
-.card img{width:100%;height:220px;object-fit:cover;display:block;background:#dfe6df}
-.card-body{padding:20px}
-.tag{display:inline-block;background:#f5ebd2;color:#72551d;padding:5px 10px;border-radius:7px;font-size:12px;font-weight:bold}
-.card h3{font-size:25px;color:var(--green);margin:10px 0}
-.card p{color:#4f5d55}
-.actions{display:flex;gap:10px;flex-wrap:wrap}
-.actions a{font-size:13px;font-weight:bold;text-decoration:none;border-radius:9px;padding:10px 12px;background:var(--green);color:white}
-.actions a.secondary{background:#e8f2eb;color:var(--green)}
-.mapbox{background:#e4eee6;border-radius:20px;padding:20px}
-.maplist{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
-.maplink{background:white;border:1px solid #d2dfd5;border-radius:12px;padding:12px;text-decoration:none;color:var(--green);font-weight:bold}
-.maplink span{display:inline-grid;place-items:center;background:var(--green);color:white;border-radius:50%;width:30px;height:30px;margin-right:7px}
-footer{background:#102f25;color:#e7f3eb;text-align:center;padding:25px;font-size:13px}
-footer a{color:var(--gold)}
-@media(max-width:600px){.hero{padding:55px 16px}.card img{height:205px}}
 html{scroll-behavior:smooth;scroll-padding-top:140px}
 body{margin:0;background:#f4f7ef;color:var(--ink);font-family:Arial,sans-serif;line-height:1.7}
 header{background:var(--green);color:white;padding:18px 22px;position:sticky;top:0;z-index:1000}
@@ -73,26 +38,15 @@ footer{background:var(--green);color:white;padding:25px;text-align:center}
 </head>
 <body>
 <header>
-<strong>VEZİRKÖPRÜ’YÜ KEŞFET</strong>
 <h2>🧭 Vezirköprü'nün Dijital Atlası</h2>
 <nav>
-<a href="#yerler">Gezilecek Yerler</a>
-<a href="#dogal">Doğa</a>
-<a href="#harita">Harita</a>
 <a href="#harita">Keşif Haritası</a><a href="#tarih">Tarihî Yerler</a><a href="#doga">Doğa</a><a href="#lezzet">Yöresel Lezzetler</a><a href="#yemek">Yeme-İçme</a><a href="#rehber">Gezi Rehberi</a>
 </nav>
 </header>
 
-<section class="hero">
-<div> SAMSUN · VEZİRKÖPRÜ </div>
-<h1>Vezirköprü’nün<br><span>Dijital Atlası</span></h1>
-<p>Tarihî miras, yemyeşil ormanlar ve etkileyici doğal güzelliklerle keşfe çık!</p>
-<a class="button" href="#yerler">Keşfe Başla ↓</a>
-<div class="credit">Vezirköprü Anadolu Lisesi · Burcu Ateş tarafından tasarlanmıştır.</div>
-</section>
 <main>
 <div class="hero">
-<div style="font-size:55px">🌿 🏛️ 🗺️</div>
+<div style="font-size🗺️</div>
 <h1>Vezirköprü'nün<br>Dijital Atlası</h1>
 <h2>Vezirköprü'ye hoş geldiniz!</h2>
 <p>Tarihi, doğası, kültürü ve lezzetleriyle Samsun'un Vezirköprü ilçesini keşfedin.</p>
@@ -103,8 +57,6 @@ footer{background:var(--green);color:white;padding:25px;text-align:center}
 <p class="credit">Vezirköprü Anadolu Lisesi<br>Burcu Ateş tarafından tasarlanmıştır.</p>
 </div>
 
-<section class="intro">
-Vezirköprü; tarihî yapıları, ormanları ve Şahinkaya Kanyonu ile Samsun’un keşfedilmeye değer ilçelerindendir.
 <section id="harita">
 <h2>🗺️ Vezirköprü Keşif Haritası</h2>
 <p>Haritadaki numaralı işaretlere dokun. Yer hakkında bilgi ve konum bağlantısı açılır.</p>
@@ -113,126 +65,29 @@ Vezirköprü; tarihî yapıları, ormanları ve Şahinkaya Kanyonu ile Samsun’
 <p class="note">Harita yüklenmezse internet bağlantını kontrol et.</p>
 </section>
 
-<section class="section" id="yerler">
-<h2>🏛️ Tarih ve Kültür</h2>
-<p class="lead">Vezirköprü’nün geçmişini fotoğraflar ve açıklamalarla tanıyalım.</p>
-<div class="grid">
-<article class="card">
-<img src="IMG_77dbb83a-4324-4ca3-bf18-9ac2ca7f8aba.jpg" alt="Kurt Köprü">
-<div class="card-body"><span class="tag">TARİHÎ MİRAS</span>
-<h3>Kurt Köprü</h3>
-<p>Kurt Köprü, taş kemerli mimarisiyle ilçenin geçmişteki ulaşım ve geçiş yollarını hatırlatan tarihî eserlerindendir. Köprü, geleneksel taş işçiliği ve dere üzerindeki konumuyla kültürel miras açısından önem taşır.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kurt+Köprü+Vezirköprü">📍 Haritada göster</a><a class="secondary" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=Kurt+Köprü+Vezirköprü">Yol tarifi</a></div>
-</div></article>
-<article class="card">
-<img src="IMG_33f0b6a7-50b7-4561-b6a3-3d078e760da3.jpg" alt="Taşhan">
-<div class="card-body"><span class="tag">TARİHÎ YAPI</span>
-<h3>Taşhan</h3>
-<p>Taşhan, geçmişte ticaret yapanların ve yolcuların konaklamasına hizmet eden han kültürünü temsil eder. Hanlar, ticaret yolları üzerindeki alışverişin ve konaklamanın gelişmesinde önemli rol oynamıştır.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Taşhan+Vezirköprü">📍 Haritada göster</a><a class="secondary" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=Taşhan+Vezirköprü">Yol tarifi</a></div>
-</div></article>
-<article class="card">
-<img src="IMG_9ee81ac9-1975-4bb1-aee4-8a5a02432eb1.jpg" alt="Bedesten ve Arasta">
-<div class="card-body"><span class="tag">ÇARŞI KÜLTÜRÜ</span>
-<h3>Bedesten ve Arasta</h3>
-<p>Bedesten ve Arasta, geleneksel çarşı kültürünü yansıtan tarihî ticaret alanlarıdır. Dükkânları ve yerel alışveriş geleneği, Vezirköprü’nün sosyal ve ekonomik geçmişini anlamaya yardımcı olur.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bedesten+Arasta+Vezirköprü">📍 Haritada göster</a><a class="secondary" target="_blank" href="https://samsun.ktb.gov.tr/TR-216876/bedesten-ve-arasta.html">Bilgi kaynağı</a></div>
-</div></article>
-<article class="card">
-<img src="IMG_0fc648fd-b2be-4a04-afb8-b45dde46efa3.jpg" alt="Tarihî mimari">
-<div class="card-body"><span class="tag">MİMARİ</span>
-<h3>Tarihî Camiler ve Yapılar</h3>
-<p>Vezirköprü’deki tarihî camiler ve geleneksel yapılar, ilçenin mimari geçmişini yansıtır. Yapıların taş ve ahşap ayrıntıları, ibadet ve günlük yaşam kültürü hakkında fikir verir.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Tarihî+camiler+Vezirköprü">📍 Haritada göster</a></div>
-</div></article>
-</div>
 <section id="tarih">
 <h2>🏛️ Tarihî Vezirköprü</h2>
 <p class="intro">Vezirköprü, tarihî yapıları, geleneksel evleri ve Osmanlı döneminden izler taşıyan kent dokusuyla geçmişin izlerini günümüze ulaştırır.</p>
 <div class="cards" id="history"></div>
 </section>
 
-<section class="section" id="dogal">
-<h2>🌿 Doğa ve Keşif</h2>
-<p class="lead">Kanyonlardan ormanlara, Vezirköprü’nün doğal güzellikleri.</p>
-<div class="grid">
-<article class="card">
-<img src="IMG_432001b6-a68b-4774-bd32-fa87d8fc1f3e.jpg" alt="Şahinkaya Kanyonu">
-<div class="card-body"><span class="tag">DOĞAL GÜZELLİK</span>
-<h3>Şahinkaya Kanyonu</h3>
-<p>Kızılırmak üzerinde bulunan Şahinkaya Kanyonu, yüksek kayalıkları ve etkileyici su manzarasıyla tanınır. Akarsuyun aşındırması ve jeolojik hareketler, bu görünümün uzun zaman içinde oluşmasında etkili olmuştur. Bölge doğa gezileri ve manzara gözlemi için ilgi çeker.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Şahinkaya+Kanyonu+Vezirköprü">📍 Haritada göster</a><a class="secondary" target="_blank" href="https://vezirkopru.gov.tr/sahinkaya-kanyonu">Resmî bilgi</a></div>
-</div></article>
-<article class="card">
-<img src="IMG_8ecf0309-1075-467b-8c53-28b87639dfd4.jpg" alt="Kanyon çevresinde su ve kayalıklar">
-<div class="card-body"><span class="tag">GEZİ NOKTASI</span>
-<h3>Çeltek</h3>
-<p>Çeltek ve çevresi, Şahinkaya Kanyonu bölgesindeki gezi planlarında araştırılabilecek noktalardandır. Tekne turu veya iskele kullanmayı planlıyorsan hareket yerini ve sefer durumunu önceden kontrol et. Bu fotoğraf bölgedeki doğal manzarayı temsil eder; Çeltek’in kesin fotoğrafı olduğu garanti edilmez.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Çeltek+Vezirköprü+Samsun">📍 Haritada göster</a><a class="secondary" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=Çeltek+Vezirköprü+Samsun">Yol tarifi</a></div>
-</div></article>
-<article class="card">
-<img src="IMG_e066c593-7468-4fd8-8429-26f34b2a52aa.jpg" alt="Ormanlık alan">
-<div class="card-body"><span class="tag">TABİAT PARKI</span>
-<h3>Vezirsuyu Tabiat Parkı</h3>
-<p>Vezirsuyu Tabiat Parkı, doğayla iç içe vakit geçirmek ve orman manzarasının tadını çıkarmak isteyenler için bir gezi alanıdır. Ziyaret öncesinde tesislerin açık olup olmadığını ve kullanım koşullarını kontrol etmek faydalıdır. Fotoğraf temsilî bir orman görüntüsüdür.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirsuyu+Tabiat+Parkı+Vezirköprü">📍 Haritada göster</a><a class="secondary" target="_blank" href="https://www.google.com/maps/dir/?api=1&destination=Vezirsuyu+Tabiat+Parkı+Vezirköprü">Yol tarifi</a></div>
-</div></article>
-<article class="card">
-<img src="IMG_e066c593-7468-4fd8-8429-26f34b2a52aa.jpg" alt="Kunduz Ormanları">
-<div class="card-body"><span class="tag">ORMAN VE YAYLA</span>
-<h3>Kunduz Ormanları</h3>
-<p>Kunduz Ormanları, geniş ormanlık alanları ve serin havasıyla bilinir. Doğa yürüyüşleri sırasında çevreyi korumak, çöpleri geride bırakmamak ve yangın uyarılarına uymak önemlidir.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kunduz+Ormanları+Vezirköprü">📍 Haritada göster</a><a class="secondary" target="_blank" href="https://www.samsun.gov.tr/kunduz-ormanlari2">Bilgi kaynağı</a></div>
-</div></article>
-<article class="card">
-<img src="IMG_52de1ad1-cb94-4b05-bb2c-14fb5c7987ce.jpg" alt="Geyikler ve orman">
-<div class="card-body"><span class="tag">YABAN HAYATI</span>
-<h3>Geyik Üretme Çiftliği</h3>
-<p>Kunduz çevresindeki geyik yetiştirme alanı, yaban hayatı ve hayvanların korunması hakkında bilgi edinmeye yardımcı olur. Ziyaretin mümkün olup olmadığını önceden öğrenmek; hayvanları beslememek ve rahatsız etmemek gerekir.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Geyik+üretme+çiftliği+Kunduz+Vezirköprü">📍 Haritada göster</a></div>
-</div></article>
-<article class="card">
-<img src="IMG_52de1ad1-cb94-4b05-bb2c-14fb5c7987ce.jpg" alt="Kunduz ormanında geyikler">
-<div class="card-body"><span class="tag">DOĞA</span>
-<h3>Kunduz’da Yaban Hayatı</h3>
-<p>Ormanlık alanlar birçok canlıya yaşam alanı sağlar. Geyikleri doğal ortamlarında gözlemlemek, doğa korumanın önemini anlamak için güzel bir fırsattır. Hayvanları uzaktan gözlemlemek ve yaşam alanlarını korumak gerekir.</p>
-<div class="actions"><a target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kunduz+Ormanları+Vezirköprü">📍 Haritada göster</a></div>
-</div></article>
 <section id="doga">
 <h2>🌲 Doğa ve Keşif</h2>
 <div class="cards" id="nature"></div>
 </section>
 
-</div>
 <section id="lezzet" style="background:#f4ead2">
 <h2>🍲 Vezirköprü'nün Yöresel Lezzetleri</h2>
 <p>Karadeniz ve İç Anadolu mutfaklarının buluştuğu Samsun mutfağını keşfederken yerel yemekleri, hamur işlerini ve geleneksel çay kültürünü deneyimleyebilirsin.</p>
 <div class="cards" id="food"></div>
 </section>
 
-<section class="section" id="harita">
-<h2>🗺️ Keşif Haritası</h2>
-<p class="lead">Numaralı noktalara dokunarak konumları haritada açabilirsin.</p>
-<div class="mapbox"><div class="maplist">
-<a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Şahinkaya+Kanyonu+Vezirköprü"><span>1</span>📍 Şahinkaya Kanyonu</a>
-<a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Çeltek+Vezirköprü+Samsun"><span>2</span>📍 Çeltek</a>
-<a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Vezirsuyu+Tabiat+Parkı+Vezirköprü"><span>3</span>📍 Vezirsuyu Tabiat Parkı</a>
-<a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kurt+Köprü+Vezirköprü"><span>4</span>📍 Kurt Köprü</a>
-<a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Taşhan+Vezirköprü"><span>5</span>📍 Taşhan</a>
-<a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Bedesten+Arasta+Vezirköprü"><span>6</span>📍 Bedesten ve Arasta</a>
-<a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Kunduz+Ormanları+Vezirköprü"><span>7</span>📍 Kunduz Ormanları</a>
-<a class="maplink" target="_blank" href="https://www.google.com/maps/search/?api=1&query=Geyik+üretme+çiftliği+Kunduz+Vezirköprü"><span>8</span>📍 Geyik üretme çiftliği</a>
-</div></div>
 <section id="yemek">
 <h2>🍽️ Nerede Yemek Yenir?</h2>
 <p>İlçe merkezindeki işletmeleri harita üzerinden bulabilir, yol tarifini açabilir ve gitmeden önce güncel çalışma saatlerini kontrol edebilirsin.</p>
 <div class="cards" id="restaurants"></div>
 </section>
 
-<footer>
-Vezirköprü’nün Dijital Atlası<br>
-Vezirköprü Anadolu Lisesi · Burcu Ateş tarafından tasarlanmıştır.
-</footer>
 <section id="rehber">
 <h2>🧳 Gezi Rehberi</h2>
 <div class="cards">
@@ -242,7 +97,9 @@ Vezirköprü Anadolu Lisesi · Burcu Ateş tarafından tasarlanmıştır.
 </div>
 </section>
 </main>
+
 <footer>Vezirköprü'nün Dijital Atlası · Burcu Ateş</footer>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const places=[
@@ -274,6 +131,7 @@ document.getElementById("restaurants").innerHTML=[
 ["Şehri Vezir Restoran","İlçe merkezinde yemek seçeneklerini araştırırken değerlendirebileceğin işletmelerden biridir. Güncel hizmet bilgilerini kontrol et.","Şehri Vezir Restoran Vezirköprü Samsun"],
 ["Vezirköprü'de kafeler","Kahve veya çay molası için yakınındaki işletmeleri ve ziyaretçi yorumlarını harita üzerinden karşılaştırabilirsin.","kafe Vezirköprü Samsun"]
 ].map(x=>card(x[0],x[1],"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(x[2]))).join("");
+
 function showPlace(p){
 document.getElementById("selected").innerHTML=`<h3>${p.id}. ${p.name}</h3><p>${p.desc}</p><a class="btn" target="_blank" rel="noopener" href="${mapUrl(p)}">📍 Konumu ve yol tarifini aç</a>`;
 }
@@ -293,11 +151,3 @@ document.getElementById("map").innerHTML="Harita yüklenemedi. İnternet bağlan
 </script>
 </body>
 </html>
-0 taahhüt yorumu
-Yorumlar
-0
- ( 0 )
-Comment
-You're not receiving notifications from this thread.
-
-Görüntülemek için seçilmiş dosya yok.
