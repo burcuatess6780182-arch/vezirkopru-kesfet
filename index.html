@@ -7,54 +7,57 @@
 <title>Vezirköprü Keşfet</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#faf7ef;color:#23352b}
-header{background:#174b3a;color:white;padding:18px;text-align:center}
-nav{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;padding:12px}
-nav a{color:white;text-decoration:none}
-.hero{padding:75px 20px;text-align:center;color:white;background:linear-gradient(#173b2bb3,#173b2bb3),url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=80') center/cover}
+body{margin:0;font-family:Arial,sans-serif;background:#faf7ef;color:#26372c}
+header{background:#174b3a;color:white;padding:16px;text-align:center}
+nav{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:12px}
+nav a{color:white;text-decoration:none;font-weight:bold;font-size:14px}
+.hero{padding:75px 18px;text-align:center;color:white;background:linear-gradient(#123b2bc9,#123b2b99),url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1500&q=85') center/cover}
 .hero h1{font-size:clamp(36px,7vw,62px);margin:0}
 .hero p{font-size:18px}
-section{max-width:1100px;margin:auto;padding:35px 18px}
+section{max-width:1150px;margin:auto;padding:32px 18px}
 h2{color:#174b3a}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
-.card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px #00000012}
-.card img{width:100%;height:180px;object-fit:cover}
-.content{padding:15px}
-.content h3{margin:4px 0 8px}
-.content p{line-height:1.5}
-.btn{display:inline-block;background:#246348;color:white;padding:10px 14px;border-radius:8px;text-decoration:none;font-weight:bold}
-.maplist{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
-.maplist a{background:#e5eee5;padding:13px;border-radius:8px;text-decoration:none;color:#174b3a}
-.culture{background:#174b3a;color:white;padding:25px;border-radius:14px}
-.culture h2{color:#f3d18d}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:18px}
+.card{background:white;border-radius:14px;overflow:hidden;box-shadow:0 4px 16px #0001;display:flex;flex-direction:column}
+.card img{width:100%;height:190px;object-fit:cover;background:#e6e6dc}
+.content{padding:15px;display:flex;flex-direction:column;flex:1}
+.content h3{margin:0 0 8px}
+.content p{line-height:1.5;color:#58645b;flex:1}
+.btn{display:inline-block;background:#246348;color:white;text-decoration:none;padding:10px 13px;border-radius:8px;font-weight:bold;align-self:flex-start}
+.mapgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.mapgrid a{padding:13px;background:#e5eee5;border-radius:8px;color:#174b3a;text-decoration:none;font-weight:bold}
+.culture{background:#174b3a;color:white;border-radius:15px;padding:24px}
+.culture h2{color:#f1d18e}
 footer{text-align:center;background:#123629;color:white;padding:25px}
+.note{font-size:13px;color:#6c756e}
 </style>
 </head>
 <body>
+
 <header>
 <h2 style="color:white;margin:0">🌿 Vezirköprü Keşfet</h2>
 <nav>
+<a href="#rota">Gezi Rotası</a>
 <a href="#yerler">Gezilecek Yerler</a>
 <a href="#yemekler">Yöresel Yemekler</a>
-<a href="#semaver">Semaver Kültürü</a>
+<a href="#semaver">Semaver</a>
 <a href="#mekanlar">Kafe ve Restoranlar</a>
 </nav>
 </header>
 
 <div class="hero">
 <h1>Vezirköprü’yü Keşfet!</h1>
-<p>Doğası, tarihi, lezzetleri ve kültürüyle güzel Vezirköprü.</p>
-<a class="btn" href="#yerler">Geziye Başla ↓</a>
+<p>Doğası, tarihi, lezzetleri ve kültürüyle Vezirköprü seni bekliyor.</p>
+<a class="btn" href="#yerler">Keşfe Başla ↓</a>
 </div>
 
 <section id="rota">
 <h2>🗺️ Numaralı Gezi Rotası</h2>
-<p>Numaralara basarak yerleri haritada açabilir, yol tarifi alabilirsin.</p>
-<div class="maplist" id="maplist"></div>
+<p>Numaralara basarak haritayı açabilir, bulunduğun yerden yol tarifi alabilirsin.</p>
+<div class="mapgrid" id="route"></div>
 </section>
 
 <section id="yerler">
-<h2>📍 Gezilecek Yerler</h2>
+<h2>🏞️ Gezilecek Yerler</h2>
 <div class="grid" id="places"></div>
 </section>
 
@@ -66,80 +69,237 @@ footer{text-align:center;background:#123629;color:white;padding:25px}
 <section id="semaver">
 <div class="culture">
 <h2>🫖 Vezirköprü Semaveri ve Önemi</h2>
-<p>Semaver, Vezirköprü’nün kültürel değerlerinden biridir. Çay demlemenin yanında misafirperverliği, sohbeti ve birlikte vakit geçirmeyi simgeler. Vezirköprü’de geleneksel yöntemlerle üretilen semaverler, el işçiliğinin ve yerel ustalığın önemli örneklerindendir.</p>
+<p>Semaver, Vezirköprü’nün kültürel miraslarından biridir. Çay demlemenin yanında misafirperverliği, sohbeti ve birlikte vakit geçirmeyi simgeler. Geleneksel semaver üretimi, ilçenin el işçiliğini ve ustalık geleneğini yansıtır.</p>
+<p>Semaver etrafında çay içmek, misafir ağırlamak ve sohbet etmek yerel kültürün güzel parçalarındandır.</p>
 <a class="btn" href="https://samsun.ktb.gov.tr/" target="_blank" rel="noopener">Kültür ve Turizm Bilgileri</a>
 </div>
 </section>
 
 <section id="mekanlar">
 <h2>☕ Kafeler ve Restoranlar</h2>
-<p>Aşağıdaki bağlantılar haritada ilgili işletme türünü arar. Gitmeden önce doğru işletmeyi seçebilirsin.</p>
-<div class="grid" id="cafes"></div>
+<p>İşletme adlarına basarak haritada konumlarını açabilirsin. Harita üzerinden yol tarifi de alabilirsin.</p>
+<div class="grid" id="businesses"></div>
 </section>
 
 <footer>
-<strong>Vezirköprü Keşfet</strong>
+<strong>🌿 Vezirköprü Keşfet</strong>
 <p>Vezirköprü’nün doğasını, tarihini ve kültürünü tanıyalım.</p>
+<a style="color:#f1d18e" href="https://vezirkopru.bel.tr/" target="_blank" rel="noopener">Vezirköprü Belediyesi</a>
 </footer>
 
 <script>
-const maps = name =>
+const map = q =>
 'https://www.google.com/maps/search/?api=1&query='+
-encodeURIComponent(name+', Vezirköprü, Samsun');
+encodeURIComponent(q+', Vezirköprü, Samsun');
 
 const places = [
-['Şahinkaya Kanyonu','Doğal güzelliği ve etkileyici kaya duvarlarıyla tanınır.','https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80','Şahinkaya Kanyonu'],
-['Vezirsuyu Tabiat Parkı','Doğayla vakit geçirmek ve dinlenmek için güzel bir duraktır.','https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80','Vezirsuyu Tabiat Parkı'],
-['Kunduz Ormanları','Ormanları ve doğal çevresiyle bilinen Kunduz bölgesini keşfet.','https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80','Kunduz Ormanları Vezirköprü'],
-['Geyik Üretme Çiftliği','Kunduz bölgesindeki geyiklerle ilgili ziyaret bilgilerini gitmeden önce kontrol et.','https://images.unsplash.com/photo-1484406566174-9da000fda645?auto=format&fit=crop&w=800&q=80','Kunduz Geyik Üretme Çiftliği'],
-['Taşhan','İlçenin tarihî ticaret hayatını yansıtan yapılardan biridir.','https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80','Taşhan Vezirköprü'],
-['Saat Kulesi','Vezirköprü merkezindeki tarihî simgelerden biridir.','https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80','Vezirköprü Saat Kulesi'],
-['Taşmedrese','İlçenin tarihî ve kültürel mirasının önemli parçalarındandır.','https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80','Taşmedrese Vezirköprü'],
-['Tarihî Vezirköprü Evleri','Geleneksel mimarisiyle ilçenin geçmişini yansıtır.','https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80','Tarihi Vezirköprü Evleri'],
-['Tarihî Arasta ve Bedesten','Eski çarşı kültürünü tanımak için ziyaret edilebilir.','https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=800&q=80','Tarihi Arasta Bedesten Vezirköprü']
+{
+name:'Şahinkaya Kanyonu',
+desc:'Altınkaya Baraj Gölü üzerinde bulunan etkileyici kanyon. Tekne gezileri ve doğal manzarasıyla tanınır.',
+img:'https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=80',
+q:'Şahinkaya Kanyonu'
+},
+{
+name:'Vezirsuyu Tabiat Parkı',
+desc:'Doğayla vakit geçirmek, dinlenmek ve çevreyi keşfetmek için tercih edilen doğal alan.',
+img:'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80',
+q:'Vezirsuyu Tabiat Parkı'
+},
+{
+name:'Kunduz Ormanları',
+desc:'Yemyeşil ormanları ve doğal çevresiyle bilinen Kunduz bölgesi.',
+img:'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=80',
+q:'Kunduz Ormanları Vezirköprü'
+},
+{
+name:'Geyik Üretme Çiftliği',
+desc:'Kunduz bölgesinde geyiklerle tanınan alan. Ziyaret koşullarını önceden kontrol et.',
+img:'https://images.unsplash.com/photo-1484406566174-9da000fda645?auto=format&fit=crop&w=900&q=80',
+q:'Geyik Üretme Çiftliği Kunduz'
+},
+{
+name:'Taşhan',
+desc:'Vezirköprü’nün tarihî ticaret geçmişini yansıtan önemli yapılardan biri.',
+img:'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80',
+q:'Taşhan Vezirköprü'
+},
+{
+name:'Saat Kulesi',
+desc:'İlçenin merkezindeki tarihî simgelerden biri.',
+img:'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80',
+q:'Vezirköprü Saat Kulesi'
+},
+{
+name:'Taşmedrese',
+desc:'Vezirköprü’nün tarihî ve kültürel mirasının önemli yapılarından biri.',
+img:'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80',
+q:'Fazıl Ahmet Paşa Medresesi Vezirköprü'
+},
+{
+name:'Tarihî Vezirköprü Evleri',
+desc:'Geleneksel mimarisi ve ahşap işçiliğiyle ilçenin geçmişini yansıtan evler.',
+img:'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80',
+q:'Tarihi Vezirköprü Evleri'
+},
+{
+name:'Tarihî Arasta ve Bedesten',
+desc:'Vezirköprü’nün eski çarşı ve ticaret kültürünü tanımak için ziyaret edilebilir.',
+img:'https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=80',
+q:'Tarihi Arasta Bedesten Vezirköprü'
+},
+{
+name:'Kurt Köprü',
+desc:'Vezirköprü çevresindeki tarihî köprülerden biri.',
+img:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80',
+q:'Kurt Köprü Vezirköprü'
+}
 ];
 
 const foods = [
-['Kaz tiridi','Vezirköprü mutfağıyla anılan yöresel yemeklerden biridir.','https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80','Kaz tiridi Vezirköprü'],
-['Katık böreği','Yörede tanınan geleneksel lezzetlerden biridir.','https://images.unsplash.com/photo-1627485937980-221c88ac04f9?auto=format&fit=crop&w=800&q=80','Katık böreği Vezirköprü'],
-['Baklalı dolma','Yöresel mutfak tanıtımlarında yer alan geleneksel bir yemektir.','https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=800&q=80','Baklalı dolma Vezirköprü'],
-['Semaver çayı','Semaver etrafında çay içmek sohbet ve misafirperverlik geleneğinin parçasıdır.','https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80','Semaver çayı Vezirköprü'],
-['Oğlak kebabı','Samsun yöresinde tanınan et yemeklerinden biridir.','https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80','Oğlak kebabı Vezirköprü']
+{
+name:'Kaz Tiridi',
+desc:'Vezirköprü ile özdeşleşen yöresel yemeklerden biri. Kaz eti ve yöresel sunumuyla bilinir.',
+img:'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=80',
+q:'Kaz tiridi Vezirköprü'
+},
+{
+name:'Oğlak Kebabı',
+desc:'Vezirköprü yöresel mutfağıyla anılan et yemeklerinden biri.',
+img:'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
+q:'Oğlak kebabı Vezirköprü'
+},
+{
+name:'Katık Böreği',
+desc:'Samsun İl Kültür ve Turizm Müdürlüğünün Vezirköprü lezzetleri arasında listelediği yöresel börek.',
+img:'https://images.unsplash.com/photo-1627485937980-221c88ac04f9?auto=format&fit=crop&w=900&q=80',
+q:'Katık böreği Vezirköprü'
+},
+{
+name:'Baklalı Dolma',
+desc:'Yöresel mutfak tanıtımlarında yer verilen geleneksel yemeklerden biri.',
+img:'https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?auto=format&fit=crop&w=900&q=80',
+q:'Baklalı dolma Vezirköprü'
+},
+{
+name:'Semaverde Çay',
+desc:'Semaver etrafında çay içmek, sohbeti ve misafirperverliği simgeleyen bir gelenektir.',
+img:'https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=80',
+q:'Çay evi Vezirköprü'
+}
 ];
 
-const cafes = [
-['Kafeler','Vezirköprü’deki kafeleri haritada görüntüle.','https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=800&q=80','kafeler Vezirköprü Samsun'],
-['Restoranlar','Restoranları ve kullanıcıların eklediği konumları incele.','https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80','restoranlar Vezirköprü Samsun'],
-['Yöresel Yemek Mekânları','Yöresel yemek sunan işletmeleri haritada ara.','https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80','yöresel yemek Vezirköprü']
+const businesses = [
+{
+name:'Kanyon Kafe Restoran',
+desc:'Samsun Büyükşehir Belediyesinin Vezirköprü sayfasında listelenen kafe ve restoran.',
+img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80',
+q:'Kanyon Kafe Restoran Vezirköprü'
+},
+{
+name:'Tarihi Taşhan Otel & Restoran',
+desc:'Taşhan çevresinde bulunan otel ve restoran.',
+img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80',
+q:'Tarihi Taşhan Otel Restoran Vezirköprü'
+},
+{
+name:'Saray Restaurant',
+desc:'Vezirköprü merkezinde bulunan restoran.',
+img:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+q:'Saray Restaurant Vezirköprü'
+},
+{
+name:'Şehri Vezir Restoran',
+desc:'Vezirköprü’de yemek yiyebileceğin restoranlardan biri.',
+img:'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80',
+q:'Şehri Vezir Restoran Vezirköprü'
+},
+{
+name:'Saim Usta',
+desc:'Vezirköprü merkezindeki restoranlardan biri.',
+img:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+q:'Saim Usta Vezirköprü'
+},
+{
+name:'Kısmet Lokantası',
+desc:'İlçe merkezinde yemek için haritada bulabileceğin lokanta.',
+img:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+q:'Kısmet Lokantası Vezirköprü'
+},
+{
+name:'Can Ciğer Vezirköprü',
+desc:'Vezirköprü’de bulunan Türk restoranı.',
+img:'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+q:'Can Ciğer Vezirköprü'
+},
+{
+name:'Kupa Coffee Co.',
+desc:'Kahve içmek ve mola vermek için Vezirköprü’deki kafelerden biri.',
+img:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80',
+q:'Kupa Coffee Co Vezirköprü'
+},
+{
+name:'Coffee Kangoo',
+desc:'Vezirköprü merkezindeki kahve dükkânlarından biri.',
+img:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80',
+q:'Coffee Kangoo Vezirköprü'
+},
+{
+name:'Kaff Coffee',
+desc:'Kahve ve mola için bir başka kafe seçeneği.',
+img:'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=900&q=80',
+q:'Kaff Coffee Vezirköprü'
+}
 ];
 
-function addCards(data,id){
- const root=document.getElementById(id);
- data.forEach(item=>{
+function addCards(items, elementId){
+ const root=document.getElementById(elementId);
+ items.forEach(item=>{
   const card=document.createElement('article');
   card.className='card';
+
   const img=document.createElement('img');
-  img.src=item[2];img.alt=item[0];img.loading='lazy';
+  img.src=item.img;
+  img.alt=item.name+' fotoğrafı';
+  img.loading='lazy';
+  img.onerror=()=>{img.alt='Fotoğraf yüklenemedi';};
+
   const content=document.createElement('div');
   content.className='content';
-  const title=document.createElement('h3');title.textContent=item[0];
-  const desc=document.createElement('p');desc.textContent=item[1];
+
+  const title=document.createElement('h3');
+  title.textContent=item.name;
+
+  const desc=document.createElement('p');
+  desc.textContent=item.desc;
+
   const link=document.createElement('a');
-  link.className='btn';link.textContent='📍 Konuma Git';
-  link.href=maps(item[3]);link.target='_blank';link.rel='noopener';
-  content.append(title,desc,link);card.append(img,content);root.append(card);
+  link.className='btn';
+  link.textContent='📍 Konuma Git';
+  link.href=map(item.q);
+  link.target='_blank';
+  link.rel='noopener';
+
+  content.append(title,desc,link);
+  card.append(img,content);
+  root.append(card);
  });
 }
+
 addCards(places,'places');
 addCards(foods,'foods');
-addCards(cafes,'cafes');
+addCards(businesses,'businesses');
 
 places.forEach((p,i)=>{
  const a=document.createElement('a');
- a.href=maps(p[3]);a.target='_blank';a.rel='noopener';
- a.textContent=(i+1)+'. '+p[0]+' 📍';
- document.getElementById('maplist').append(a);
+ a.href=map(p.q);
+ a.target='_blank';
+ a.rel='noopener';
+ a.textContent=(i+1)+'. '+p.name+' 📍';
+ document.getElementById('route').append(a);
 });
 </script>
+<p class="note" style="text-align:center;padding:0 16px 20px">
+Not: Yemek ve işletme fotoğrafları temsili görsellerdir; her fotoğrafın Vezirköprü'de çekildiği doğrulanmış değildir. İşletmelerin konumlarını ve güncel bilgilerini gitmeden önce kontrol et.
+</p>
 </body>
 </html>
