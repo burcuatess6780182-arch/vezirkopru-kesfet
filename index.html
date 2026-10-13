@@ -3,319 +3,151 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Vezirköprü Keşfet</title>
-
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f6f5ee;
-  color: #263b32;
-}
-
-header {
-  min-height: 340px;
-  padding: 55px 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: white;
-  background:
-    linear-gradient(#102b2770, #102b27b8),
-    url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=85")
-    center/cover;
-}
-
-header h1 {
-  font-size: clamp(36px, 8vw, 64px);
-  margin: 10px 0;
-}
-
-header p {
-  font-size: 17px;
-  line-height: 1.7;
-  max-width: 550px;
-}
-
-header a {
-  background: #e9bd77;
-  color: #263b32;
-  padding: 13px 23px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 12px;
-}
-
-section {
-  padding: 28px 16px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-h2 {
-  text-align: center;
-  font-size: 27px;
-  margin-bottom: 10px;
-}
-
-.intro {
-  text-align: center;
-  color: #63736a;
-  line-height: 1.7;
-}
-
-#map {
-  width: 100%;
-  height: 410px;
-  border-radius: 18px;
-  border: 3px solid white;
-  box-shadow: 0 5px 20px #20392b18;
-  z-index: 1;
-}
-
-.hint {
-  text-align: center;
-  font-size: 14px;
-  color: #63736a;
-  margin-top: 12px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  margin-top: 25px;
-}
-
-.card {
-  background: white;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px #263b3210;
-}
-
-.card img {
-  width: 100%;
-  height: 175px;
-  object-fit: cover;
-  background: #e0e7df;
-}
-
-.card-content { padding: 16px; }
-
-.number {
-  display: inline-block;
-  background: #e9bd77;
-  color: #263b32;
-  border-radius: 20px;
-  padding: 5px 10px;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.card h3 { margin: 12px 0 8px; }
-
-.card p {
-  color: #63736a;
-  line-height: 1.65;
-  font-size: 14px;
-}
-
-.card button {
-  border: 0;
-  border-radius: 20px;
-  background: #285b45;
-  color: white;
-  padding: 10px 15px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-footer {
-  background: #203e31;
-  color: white;
-  padding: 25px 15px;
-  text-align: center;
-  line-height: 1.8;
-}
-
-.leaflet-popup-content {
-  line-height: 1.6;
-  max-width: 230px;
-}
-
-.leaflet-popup-content img {
-  width: 100%;
-  height: 110px;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-@media(max-width: 500px) {
-  header { min-height: 300px; padding: 35px 16px; }
-  #map { height: 360px; }
-  section { padding: 24px 13px; }
-}
+*{box-sizing:border-box}
+body{margin:0;background:#f5f3eb;color:#243c30;font-family:Arial,sans-serif}
+.hero{padding:65px 20px;text-align:center;color:white;background:linear-gradient(#102d2470,#102d24b8),url('https://www.vezirkopru.bel.tr/upload/pages/kunduz-ormanlari/kunduz-ormanlari_9893.jpg') center/cover}
+.hero h1{font-size:clamp(38px,8vw,65px);margin:12px 0}
+.hero p{line-height:1.7}
+.hero a{display:inline-block;background:#e8c17e;color:#243c30;padding:13px 22px;border-radius:25px;text-decoration:none;font-weight:bold}
+section{max-width:1100px;margin:auto;padding:28px 15px}
+h2{text-align:center}
+.sub{text-align:center;line-height:1.7;color:#66766b}
+#map{height:390px;border-radius:16px;border:3px solid white}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.card{background:white;border-radius:15px;overflow:hidden;box-shadow:0 4px 14px #00000012}
+.card img{width:100%;height:180px;object-fit:cover}
+.card .inside{padding:15px}
+.card p{line-height:1.65;color:#5d6c62;font-size:14px}
+.card button{background:#285b45;color:white;border:0;border-radius:20px;padding:10px 14px}
+.num{color:#855d20;font-weight:bold}
+footer{background:#203e31;color:white;text-align:center;padding:25px}
 </style>
 </head>
-
 <body>
 
-<header>
-  <p>🌿 SAMSUN • TARİH • DOĞA • KÜLTÜR</p>
+<header class="hero">
+  <p>SAMSUN • TARİH • DOĞA • KÜLTÜR</p>
   <h1>Vezirköprü<br>Keşfet</h1>
-  <p>Tarihin izinde, doğanın kalbinde…
-  Vezirköprü'nün güzelliklerini birlikte keşfet!</p>
-  <a href="#harita">Gezi Rotasını Keşfet ↓</a>
+  <p>Tarihin izinde, doğanın kalbinde.<br>Vezirköprü'nün güzelliklerini keşfet!</p>
+  <a href="#harita">Gezi haritasına git ↓</a>
 </header>
 
 <section id="harita">
-  <h2>📍 Keşif Haritası</h2>
-  <p class="intro">
-    Numaralara dokun, Vezirköprü'nün görülmeye değer
-    yerlerini tanı ve gezi rotanı oluştur.
-  </p>
-  <div id="map"></div>
-  <p class="hint">
-    Haritadaki numaralara basarak yerlerin açıklamalarını görebilirsin.
-  </p>
+<h2>📍 Numaralı Gezi Haritası</h2>
+<p class="sub">Haritadaki numaralara dokun. Yerlerin adını, fotoğrafını ve açıklamasını gör.</p>
+<div id="map"></div>
 </section>
 
-<section id="yerler">
-  <h2>✨ Gezilecek 7 Güzel Yer</h2>
-  <p class="intro">Her köşesinde ayrı bir hikâye var.</p>
-  <div class="cards" id="cards"></div>
+<section>
+<h2>🌿 Vezirköprü'de Gezilecek Yerler</h2>
+<p class="sub">Doğal güzellikler ve tarihi yapılar</p>
+<div class="cards" id="cards"></div>
 </section>
 
 <footer>
-  <strong>Vezirköprü Keşfet 🌿</strong><br>
-  Tarihi tanı, doğayı keşfet, güzellikleri yaşa.<br>
-  <small>Samsun • Vezirköprü</small>
+<strong>Vezirköprü Keşfet</strong><br>
+Samsun'un tarihini ve doğasını tanı.
 </footer>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-const places = [
-  {
-    id: 1,
-    name: "Şahinkaya Kanyonu",
-    lat: 41.086,
-    lng: 35.948,
-    desc: "Dik kayalıkları ve etkileyici manzarasıyla ünlü doğal bir güzelliktir. Kızılırmak'ın oluşturduğu bu bölgede tekne gezileri de yapılır.",
-    img: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 2,
-    name: "Taşhan",
-    lat: 41.143,
-    lng: 35.455,
-    desc: "Vezirköprü'nün tarihi dokusunu yansıtan önemli yapılardan biridir. Geleneksel mimarisiyle geçmişin izlerini taşır.",
-    img: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 3,
-    name: "Saat Kulesi",
-    lat: 41.1435,
-    lng: 35.456,
-    desc: "İlçe merkezinin tarihi simgelerinden biridir. Vezirköprü'yü gezerken görülebilecek dikkat çekici yapılardandır.",
-    img: "https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 4,
-    name: "Bedesten ve Arasta",
-    lat: 41.1425,
-    lng: 35.454,
-    desc: "Tarihi ticaret hayatını yansıtan bu bölge, geleneksel çarşı kültürünü tanımak için güzel bir duraktır.",
-    img: "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 5,
-    name: "Taşmedrese",
-    lat: 41.1415,
-    lng: 35.458,
-    desc: "Vezirköprü'nün kültürel mirasını yansıtan tarihi yapılardan biridir. Mimari özellikleriyle dikkat çeker.",
-    img: "https://images.unsplash.com/photo-1564769625905-50e93615e769?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 6,
-    name: "Kunduz Ormanları ve Geyikler",
-    lat: 41.025,
-    lng: 35.535,
-    desc: "Yeşil ormanları ve doğal güzellikleriyle bilinen Kunduz, doğayla vakit geçirmek isteyenler için güzel bir yerdir. Bölgede geyik üretme çiftliği de bulunur.",
-    img: "https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    id: 7,
-    name: "Vezirsuyu Tabiat Parkı",
-    lat: 41.115,
-    lng: 35.900,
-    desc: "Doğayla iç içe vakit geçirilebilen bir tabiat parkıdır. Çevresindeki ormanlar ve Şahinkaya Kanyonu'na yakınlığıyla öne çıkar.",
-    img: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80"
-  }
+const places=[
+{
+name:"Şahinkaya Kanyonu",
+lat:41.086,lng:35.948,
+desc:"Kızılırmak üzerinde bulunan kanyon, turkuaz suları ve yüksek kayalıklarıyla Vezirköprü'nün en etkileyici doğal güzelliklerindendir.",
+img:"https://vezirkopru.bel.tr/upload/pages/sahinkaya-kanyonu/sahinkaya-kanyonu_5274.jpg",
+source:"https://vezirkopru.bel.tr/sayfa/sahinkaya-kanyonu"
+},
+{
+name:"Taşhan",
+lat:41.143,lng:35.455,
+desc:"Tarihi bir Osmanlı hanıdır. Taş ve ahşap mimarisiyle Vezirköprü'nün geçmişini yansıtır.",
+img:"https://www.vezirkopru.bel.tr/upload/pages/tashan/tashan_4344.jpg",
+source:"https://www.vezirkopru.bel.tr/sayfa/tashan"
+},
+{
+name:"Saat Kulesi",
+lat:41.1435,lng:35.456,
+desc:"1904-1906 yıllarında yaptırılan saat kulesi, ilçe merkezinin tanınmış tarihi simgelerindendir.",
+img:"https://www.vezirkopru.bel.tr/upload/pages/saat-kulesi/saat-kulesi_4782.jpg",
+source:"https://www.vezirkopru.bel.tr/sayfa/saat-kulesi"
+},
+{
+name:"Taşmedrese",
+lat:41.1415,lng:35.458,
+desc:"1662 yılında Fazıl Ahmet Paşa tarafından yaptırılan tarihi medrese, Vezirköprü'nün önemli kültürel miraslarındandır.",
+img:"",
+source:"https://vezirkopru.bel.tr/sayfa/tasmedrese"
+},
+{
+name:"Vezirköprü Evleri",
+lat:41.142,lng:35.452,
+desc:"Geleneksel mimarisi ve ahşap işçiliğiyle dikkat çeken tarihi evler, ilçenin eski sokaklarına karakter kazandırır.",
+img:"",
+source:"https://www.vezirkopru.bel.tr/sayfa/vezirkopru-evleri"
+},
+{
+name:"Kunduz Ormanları ve Geyikler",
+lat:41.180,lng:35.010,
+desc:"Ormanları, yaylaları ve geyik üretme sahasıyla tanınan Kunduz, doğa tutkunları için güzel bir duraktır.",
+img:"https://www.vezirkopru.bel.tr/upload/pages/kunduz-ormanlari/kunduz-ormanlari_9893.jpg",
+source:"https://www.vezirkopru.bel.tr/sayfa/kunduz-ormanlari"
+},
+{
+name:"Vezirsuyu Tabiat Parkı",
+lat:41.115,lng:35.900,
+desc:"Ormanlık doğal çevresiyle öne çıkan tabiat parkı, açık havada vakit geçirmek için tercih edilen alanlardandır.",
+img:"",
+source:"https://bolge11.tarimorman.gov.tr/"
+}
 ];
 
-const map = L.map("map").setView([41.13, 35.66], 10);
-
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+const map=L.map("map").setView([41.14,35.48],10);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",{
+attribution:'&copy; OpenStreetMap'
 }).addTo(map);
 
-const markers = {};
+const markers=[];
+const cards=document.getElementById("cards");
 
-places.forEach(place => {
-  const marker = L.marker([place.lat, place.lng]).addTo(map);
+places.forEach((p,i)=>{
+const marker=L.marker([p.lat,p.lng]).addTo(map);
+markers.push(marker);
 
-  marker.bindPopup(`
-    <b>${place.id}. ${place.name}</b>
-    <img src="${place.img}" alt="${place.name}"
-         onerror="this.style.display='none'">
-    <p>${place.desc}</p>
-    <a href="https://www.google.com/maps/dir/?api=1&destination=${place.lat},${place.lng}"
-       target="_blank" rel="noopener">Yol tarifi al ↗</a>
-  `);
+const photo=p.img
+? `<img src="${p.img}" alt="${p.name}" onerror="this.style.display='none'">`
+: "";
 
-  markers[place.id] = marker;
+marker.bindPopup(`
+<strong>${i+1}. ${p.name}</strong>
+${photo}
+<p>${p.desc}</p>
+<a href="${p.source}" target="_blank" rel="noopener">Resmî bilgi sayfası ↗</a><br>
+<a href="https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}" target="_blank" rel="noopener">Yol tarifi al ↗</a>
+`);
 
-  const card = document.createElement("article");
-  card.className = "card";
-  card.innerHTML = `
-    <img src="${place.img}" alt="${place.name}"
-         loading="lazy"
-         onerror="this.style.display='none'">
-    <div class="card-content">
-      <span class="number">DURAK ${place.id}</span>
-      <h3>${place.name}</h3>
-      <p>${place.desc}</p>
-      <button type="button" data-place="${place.id}">
-        Haritada göster 📍
-      </button>
-    </div>
-  `;
-  document.getElementById("cards").appendChild(card);
+const card=document.createElement("article");
+card.className="card";
+card.innerHTML=`
+${photo}
+<div class="inside">
+<span class="num">DURAK ${i+1}</span>
+<h3>${p.name}</h3>
+<p>${p.desc}</p>
+<button type="button">Haritada göster 📍</button>
+</div>`;
+card.querySelector("button").addEventListener("click",()=>{
+map.setView([p.lat,p.lng],13);
+marker.openPopup();
+document.getElementById("harita").scrollIntoView({behavior:"smooth"});
 });
-
-document.getElementById("cards").addEventListener("click", event => {
-  const button = event.target.closest("button[data-place]");
-  if (!button) return;
-
-  const place = places.find(p => p.id === Number(button.dataset.place));
-  map.setView([place.lat, place.lng], 13);
-  markers[place.id].openPopup();
-
-  document.getElementById("harita").scrollIntoView({
-    behavior: "smooth"
-  });
+cards.appendChild(card);
 });
 </script>
-
 </body>
 </html>
